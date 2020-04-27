@@ -8,7 +8,8 @@ group by city,colyear, colmonth order by city asc;
 select UniqueCarrier, colYear, colMonth, sum(cancelled) as total_cancelled from flights as f
 inner join carriers as c on f.uniqueCarrier=c.carrierCode 
 group by UniqueCarrier, colYear,colMonth order by total_cancelled desc ,uniquecarrier,colyear asc;
-select TailNum, sum(distance) as totalDistance from flights group by Tailnum order by totalDistance DESC 
-LIMIT 2588 OFFSET 1;
+select TailNum, sum(distance) as totalDistance from flights 
+group by Tailnum 
+order by totalDistance DESC limit 3000 offset 1;
 SELECT Uniquecarrier, avg(arrdelay) as avgDelay from flights
-group by uniquecarrier order by avgDelay desc limit 9;
+group by uniquecarrier having avg(arrdelay) >10 order by avgDelay desc;
